@@ -14,8 +14,10 @@ let animals = [];
 
 function start() {
   console.log("JS kører");
-    createAnimal("John", "Human", 35);
-    document.querySelector("#create-new").addEventListener("click", createAnimal)
+  createAnimal("John", "Human", 35);
+
+  const createButton = document.querySelector("button");
+  createButton.addEventListener("click", handleCreateButton);
 }
 
 function createAnimal(name, type, age) {
@@ -29,4 +31,17 @@ function createAnimal(name, type, age) {
 
   console.log("Animal created:", animal);
   console.log("Updated animals list:", animals);
+}
+
+function handleCreateButton() {
+  const nameInput = document.querySelector("#animal-name").value;
+  const typeInput = document.querySelector("#animal-type").value;
+  const ageInput = document.querySelector("#animal-age").value;
+
+  createAnimal(nameInput, typeInput, parseInt(ageInput));
+
+  // Clear input fields
+  document.querySelector("#animal-name").value = "";
+  document.querySelector("#animal-type").value = "";
+  document.querySelector("#animal-age").value = "";
 }
